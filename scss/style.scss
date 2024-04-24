@@ -5,6 +5,7 @@ html, body {
 	scroll-behavior: smooth;
 }
 
+/* Reference: https://stackoverflow.com/questions/24990554/how-to-include-a-font-ttf-using-css */
 @font-face {
     font-family: 'Paris 2024';
     src: url('../fonts/Paris2024-Variable-Regular.eot');
@@ -29,9 +30,7 @@ html, body {
 	justify-content: space-between;
 	transition: 0.3s;
 	font-size: 25px;
-	/* Blur filter reference: https://www.w3schools.com/cssref/css3_pr_backdrop-filter.php */
-	backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+	z-index: 2;
 }
 
 .navbarLinks {
@@ -55,12 +54,13 @@ html, body {
 .parisText {
 	font-family: 'Paris 2024';
 	color: $white;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	position: absolute;
+	top: 20%;
+	left: 12%;
+	transform: translate(-12%, -20%);
 	font-size: 250px;
-	transition: 0.5s;
+	//transition: 0.9s;
+	z-index: 1;
 }
 
 #parallax {
@@ -71,4 +71,10 @@ html, body {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+
+.blurFilter {
+	/* Blur filter reference: https://www.w3schools.com/cssref/css3_pr_backdrop-filter.php */
+	backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
