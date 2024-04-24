@@ -62,6 +62,7 @@ html, body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  transition: 0.5s;
 }
 
 .blurFilter {

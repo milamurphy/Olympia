@@ -31,12 +31,15 @@ window.onscroll = function () {
         let newSize = 105 - window.pageYOffset / 12;
         newSize = Math.max(newSize, 100);
         bg.style.backgroundSize = newSize + '%';
+
+        if (window.innerWidth < 800) {
+            bg.style.backgroundSize = 'cover';
+        }
     })
 }
 
-
 const slideshow = document.getElementById('parallax');
-const images = ['parisbg.jpg', 'parisbg2.jpeg', 'parisbg3.webp'];
+const images = ['parisbg.jpg', 'parisbg2.jpg', 'parisbg3.jpg'];
 let currentIndex = 0;
 
 function changeBackground() {
