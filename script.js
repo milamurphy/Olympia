@@ -25,7 +25,7 @@ window.onscroll = function () {
         }
         */
 
-    // Tutorial Reference: https://www.youtube.com/watch?v=by-3r2eqMXA
+    // Reference: https://www.youtube.com/watch?v=by-3r2eqMXA
     const bg = document.getElementById('parallax');
     window.addEventListener('scroll', function () {
         let newSize = 105 - window.pageYOffset / 12;
@@ -33,3 +33,15 @@ window.onscroll = function () {
         bg.style.backgroundSize = newSize + '%';
     })
 }
+
+
+const slideshow = document.getElementById('parallax');
+const images = ['parisbg.jpg', 'parisbg2.jpeg', 'parisbg3.webp'];
+let currentIndex = 0;
+
+function changeBackground() {
+    slideshow.style.backgroundImage = `url("../images/${images[currentIndex]}")`;
+    currentIndex = (currentIndex + 1) % images.length; // cycle through the images
+}
+
+setInterval(changeBackground, 5000); // 5 seconds
