@@ -1,0 +1,56 @@
+html, body {
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  transition: 0.3s;
+  font-size: 25px;
+  /* Blur filter reference: https://www.w3schools.com/cssref/css3_pr_backdrop-filter.php */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.navbarlinks {
+  display: flex;
+  margin-right: 20px;
+}
+
+.navbarlinks a {
+  color: white;
+  align-items: center;
+  text-decoration: none;
+  padding: 30px 20px;
+}
+
+.logo {
+  height: 5vh;
+  padding: 30px;
+  transition: height 0.3s;
+}
+
+.paristext {
+  color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 250px;
+  transition: 0.5s;
+}
+
+#parallax {
+  /* Parallax reference: https://www.w3schools.com/howto/howto_css_parallax.asp */
+  background-image: url("../images/parisbg.jpg");
+  height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}/*# sourceMappingURL=style.css.map */
