@@ -3,7 +3,16 @@ html, body {
   scroll-behavior: smooth;
 }
 
+@font-face {
+  font-family: "Paris 2024";
+  src: url("../fonts/Paris2024-Variable-Regular.eot");
+  src: url("../fonts/Paris2024-Variable-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Paris2024-Variable-Regular.woff2") format("woff2"), url("../fonts/Paris2024-Variable-Regular.woff") format("woff"), url("../fonts/Paris2024-Variable-Regular.ttf") format("truetype"), url("../fonts/Paris2024-Variable-Regular.svg#Paris2024-Variable-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 .navbar {
+  font-family: "Paris 2024";
   position: fixed;
   top: 0;
   width: 100%;
@@ -17,12 +26,12 @@ html, body {
   -webkit-backdrop-filter: blur(5px);
 }
 
-.navbarlinks {
+.navbarLinks {
   display: flex;
   margin-right: 20px;
 }
 
-.navbarlinks a {
+.navbarLinks a {
   color: white;
   align-items: center;
   text-decoration: none;
@@ -35,7 +44,8 @@ html, body {
   transition: height 0.3s;
 }
 
-.paristext {
+.parisText {
+  font-family: "Paris 2024";
   color: white;
   position: fixed;
   top: 50%;

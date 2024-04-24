@@ -1,7 +1,7 @@
 window.onscroll = function () {
     var navbar = document.querySelector('.navbar');
     var logo = document.querySelector('.logo');
-    var paristext = document.querySelector('.paristext');
+    var paristext = document.querySelector('.parisText');
     var scrollPosition = window.scrollY;
 
     if (scrollPosition > 200) {
