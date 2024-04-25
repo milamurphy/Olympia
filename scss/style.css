@@ -12,7 +12,7 @@ html, body {
   font-style: normal;
   font-display: swap;
 }
-.navbar {
+.ac_navbar {
   font-family: "Paris 2024";
   position: fixed;
   top: 0;
@@ -25,25 +25,25 @@ html, body {
   z-index: 2;
 }
 
-.navbarLinks {
+.ac_navbarLinks {
   display: flex;
   margin-right: 20px;
 }
 
-.navbarLinks a {
+.ac_navbarLinks a {
   color: white;
   align-items: center;
   text-decoration: none;
   padding: 30px 20px;
 }
 
-.logo {
+.ac_logo {
   height: 5vh;
   padding: 30px;
   transition: height 0.3s;
 }
 
-.parisText {
+.ac_parisText {
   font-family: "Paris 2024";
   color: white;
   position: absolute;
@@ -54,7 +54,7 @@ html, body {
   z-index: 1;
 }
 
-#parallax {
+#ac_parallax {
   /* Parallax reference: https://www.w3schools.com/howto/howto_css_parallax.asp */
   background-image: url("../images/parisbg.jpg");
   height: 100vh;
@@ -65,8 +65,9 @@ html, body {
   transition: 0.5s;
 }
 
-.blurFilter {
+.ac_blurFilter {
   /* Blur filter reference: https://www.w3schools.com/cssref/css3_pr_backdrop-filter.php */
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }/*# sourceMappingURL=style.css.map */
