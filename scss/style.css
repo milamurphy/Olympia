@@ -1,6 +1,9 @@
 html, body {
   margin: 0;
   scroll-behavior: smooth;
+  font-family: "Roboto", sans-serif;
+  color: #363839;
+  font-size: 20px;
 }
 
 /* Reference: https://stackoverflow.com/questions/24990554/how-to-include-a-font-ttf-using-css */
@@ -37,21 +40,58 @@ html, body {
   padding: 30px 20px;
 }
 
+.ac_hamburger {
+  cursor: pointer;
+  display: none;
+}
+
+.ac_hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 5px 0;
+  transition: 0.4s;
+}
+
 .ac_logo {
   height: 5vh;
   padding: 30px;
   transition: height 0.3s;
 }
 
-.ac_parisText {
+.ac_fire {
+  height: 10vh;
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  transform: translateX(-50%);
+  transition: transform 0.5s;
+}
+
+.ac_fire:hover {
+  transform: translateX(-50%) scale(0.9);
+  transform-origin: center;
+}
+
+.ac_textContainer {
   font-family: "Paris 2024";
   color: white;
   position: absolute;
   top: 20%;
   left: 12%;
   transform: translate(-12%, -20%);
-  font-size: 250px;
   z-index: 1;
+}
+
+.ac_parisText {
+  font-size: 35vh;
+}
+
+.ac_yearText {
+  position: relative;
+  top: 100%;
+  margin-top: -10vh;
+  font-size: 20vh;
 }
 
 #ac_parallax {
@@ -70,4 +110,105 @@ html, body {
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ac_olympicsSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 50px;
+  scroll-margin-top: 50px;
+}
+
+.ac_leftColumn {
+  flex: 1;
+  position: relative;
+}
+
+.ac_leftColumn img {
+  max-width: 80vh;
+  height: auto;
+  border-radius: 40px;
+}
+
+.ac_rightColumn {
+  flex: 1;
+  padding-left: 20px;
+}
+
+#ac_countdown {
+  font-size: 30px;
+  color: white;
+  background: linear-gradient(30deg, rgb(160, 210, 255) 0%, rgb(88, 207, 159) 100%);
+  width: 35%;
+  padding: 10px;
+  text-align: center;
+  position: absolute;
+  top: 94%;
+  left: 60%;
+  border-radius: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ac_mapsSection {
+  margin: 50px;
+}
+
+#map {
+  width: auto;
+  height: 80vh;
+  border: thin solid #ccc;
+}
+
+.ac_touristSection {
+  margin: 50px;
+}
+
+.ac_skyline {
+  width: 100%;
+  margin: 0;
+  display: block;
+}
+
+.ac_footer {
+  width: 100%;
+  background-color: #3C3C3B;
+  color: white;
+  margin: 0;
+  padding: 20px;
+}
+
+.ac_footer p {
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .ac_navbarLinks {
+    display: none; /* Hide navbar links by default */
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background-color: black;
+    width: 100%;
+    padding: 20px;
+  }
+  .ac_navbarLinks.active {
+    display: flex; /* Show navbar links when active */
+  }
+  .ac_navbarLinks a {
+    padding: 10px 0;
+  }
+  .ac_hamburger {
+    display: block; /* Show hamburger icon */
+  }
+  .ac_navbar.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+  .ac_navbar.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .ac_navbar.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
 }/*# sourceMappingURL=style.css.map */
