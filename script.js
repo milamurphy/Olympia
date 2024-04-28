@@ -124,14 +124,24 @@ function loadMap() {
 function calculateRoute(travelMode) {
     let start = document.getElementById("start").value;
     let end = document.getElementById("end").value;
+    let waypointsInput = document.getElementById("waypoints").value;
 
     if (start === "" || end === "") {
         return;
     }
 
+    let waypoints = [];
+    if (waypointsInput !== "") {
+        waypoints = waypointsInput.split(",").map(waypoint => {
+            return { location: waypoint.trim(), stopover: true };
+        });
+    }
+
     let request = {
         origin: start,
         destination: end,
+        waypoints: waypoints,
+        optimizeWaypoints: true,
         travelMode: travelMode
     };
 
@@ -139,8 +149,7 @@ function calculateRoute(travelMode) {
     directionsService.route(request, (route, status) => {
         if (status === google.maps.DirectionsStatus.OK) {
             directionsRenderer.setDirections(route);
-            document.getElementById("directionsDetails").open = false;
-
+            document.getElementById("directionsDetails").open = true;
             let directionsPanel = document.getElementById("directionsPanel");
             directionsPanel.innerHTML = "";
             let summaryPanel = document.createElement("div");

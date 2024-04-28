@@ -62,6 +62,8 @@
             <input id="start" type="text"><br>
             <span class="selectLocationLabel">End:</span>
             <input id="end" type="text"><br>
+            <span class="selectLocationLabel">Additional Stops:</span>
+            <input id="waypoints" type="text" placeholder="Enter stops separated by commas"><br>
 
             <button onclick="calculateRoute('DRIVING')"><i class="material-icons">Car</i></button>
             <button onclick="calculateRoute('TRANSIT')"><i class="material-icons">Bus</i></button>
@@ -70,11 +72,12 @@
         
             <input type="button" onclick="calculateRoute()" id="submit" value="Submit">
         </div>
+        
+        <div id=map></div>
         <details id="directionsDetails">
             <summary>Directions</summary>
             <div id="directionsPanel"></div>
         </details>
-        <div id=map></div>
     </div>
 
     <div class="ac_touristSection">
