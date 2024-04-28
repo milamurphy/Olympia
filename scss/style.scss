@@ -173,6 +173,24 @@ body {
     border: thin solid #ccc;
 }
 
+#controlPanel {
+	background-color: #fff;
+	margin-bottom: 50px;
+}
+
+.selectLocationLabel {
+	font-weight: bold;
+	min-width: 40px;
+	display: inline-block;
+}
+
+#directions {
+	width: 100%;
+	margin: 0px;
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+
 .ac_backgroundImage {
     z-index: 0;
     position: absolute;

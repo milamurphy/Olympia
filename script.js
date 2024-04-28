@@ -86,6 +86,7 @@ var x = setInterval(function () {
 // google maps
 let map
 let service
+let directionsRenderer
 
 function loadMap() {
     let services_centre_location = { lat: 48.856614, lng: 2.3522219 }; // Paris
@@ -102,6 +103,11 @@ function loadMap() {
 
     hidePointsOfInterest(map)
 
+    let startInput = document.getElementById("start");
+    let endInput = document.getElementById("end");
+    new google.maps.places.Autocomplete(startInput);
+    new google.maps.places.Autocomplete(endInput);
+
     service = new google.maps.places.PlacesService(map)
 
     service.nearbySearch({
@@ -109,6 +115,39 @@ function loadMap() {
         radius: 500, // radius (in metres) of the search
         type: "cafe"
     }, getNearbyServicesMarkers)
+
+    directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setMap(map);
+    directionsRenderer.setPanel(document.getElementById("directions"));
+}
+
+function calculateRoute(travelMode) {
+    let start = document.getElementById("start").value;
+    let end = document.getElementById("end").value;
+
+    if (start === "" || end === "") {
+        return;
+    }
+
+    let request = {
+        origin: start,
+        destination: end,
+        travelMode: travelMode
+    };
+
+    let directionsService = new google.maps.DirectionsService();
+    directionsService.route(request, (route, status) => {
+        if (status === google.maps.DirectionsStatus.OK) {
+            directionsRenderer.setDirections(route);
+            document.getElementById("directionsDetails").open = false;
+
+            let directionsPanel = document.getElementById("directionsPanel");
+            directionsPanel.innerHTML = "";
+            let summaryPanel = document.createElement("div");
+            directionsRenderer.setPanel(summaryPanel);
+            directionsPanel.appendChild(summaryPanel);
+        }
+    });
 }
 
 function getNearbyServicesMarkers(results, status) {
@@ -178,7 +217,7 @@ function hidePointsOfInterest(map) {
     map.mapTypes.set("hide_poi", styledMapType)
 
     map.setMapTypeId("hide_poi")
-}
+} // end of google maps
 
 
 async function displayWeather() {
@@ -269,7 +308,7 @@ async function convertCurrency() {
     const toCurrency = document.getElementById('ac_toCurrency').value;
     const amount = document.getElementById('ac_amount').value;
     const conversionResultDiv = document.getElementById('ac_conversionResult');
-    
+
     const url = `https://currency-exchange.p.rapidapi.com/exchange?from=${fromCurrency}&to=${toCurrency}&q=${amount}`;
     const options = {
         method: 'GET',

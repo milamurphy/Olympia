@@ -57,6 +57,23 @@
 
     <div class="ac_mapsSection">
         <h1>Get There</h1>
+        <div id="controlPanel">
+            <span class="selectLocationLabel">Start:</span>
+            <input id="start" type="text"><br>
+            <span class="selectLocationLabel">End:</span>
+            <input id="end" type="text"><br>
+
+            <button onclick="calculateRoute('DRIVING')"><i class="material-icons">Car</i></button>
+            <button onclick="calculateRoute('TRANSIT')"><i class="material-icons">Bus</i></button>
+            <button onclick="calculateRoute('BICYCLING')"><i class="material-icons">Bike</i></button>
+            <button onclick="calculateRoute('WALKING')"><i class="material-icons">Walk</i></button>
+        
+            <input type="button" onclick="calculateRoute()" id="submit" value="Submit">
+        </div>
+        <details id="directionsDetails">
+            <summary>Directions</summary>
+            <div id="directionsPanel"></div>
+        </details>
         <div id=map></div>
     </div>
 
