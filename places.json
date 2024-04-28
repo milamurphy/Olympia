@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Eiffel Tower",
+        "description": "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France.",
+        "address": "Champ de Mars, 5 Av. Anatole France, 75007 Paris, France",
+        "lat": 48.858372,
+        "lng": 2.294481,
+        "image": "https://i.ibb.co/NWKHZTH/eiffel.png"
+    },
+    {
+        "name": "Lourve Museum",
+        "description": "The Louvre, or the Louvre Museum, is a national art museum in Paris, France, containing iconic masterpieces such as the Mona Lisa.",
+        "address": "75001 Paris, France",
+        "lat": 48.8606,
+        "lng": 2.3376,
+        "image": "https://i.ibb.co/vQFxZp4/lourve.png"
+    },
+    {
+        "name": "Arc De Triomphe",
+        "description": "The Arc de Triomphe de l'Étoile is one of the most famous monuments in Paris, France.",
+        "address": "Pl. Charles de Gaulle, 75008 Paris, France",
+        "lat": 48.8738,
+        "lng": 2.2950,
+        "image": "https://upload.wikimedia.org/wikipedia/commons/a/af/Arc_Triomphe_%28square%29.jpg"
+    },
+    {
+        "name": "Musée d'Orsay",
+        "description": "The Musée d'Orsay is a museum in Paris, France, on the Left Bank of the Seine.",
+        "address": "Esplanade Valéry Giscard d'Estaing, 75007 Paris, France",
+        "lat": 48.8599179,
+        "lng": 2.3265849,
+        "image": "https://i.ibb.co/Br4n3Fg/musee.png"
+    },
+    {
+        "name": "Cathédrale Notre-Dame de Paris",
+        "description": "Notre-Dame de Paris, referred to simply as Notre-Dame, is a medieval Catholic cathedral on the Île de la Cité, in the 4th arrondissement of Paris, France.",
+        "address": "6 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France",
+        "lat": 48.8529371,
+        "lng": 2.3500501,
+        "image": "https://i.natgeofe.com/n/5fdfbda3-0ccf-4df1-8ec1-fe8a521e6337/Notre-Dame_west-facade_square.jpg"
+    }
+]

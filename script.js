@@ -89,7 +89,7 @@ let service
 let directionsRenderer
 
 function loadMap() {
-    let services_centre_location = { lat: 48.856614, lng: 2.3522219 }; // Paris
+    let services_centre_location = { lat: 48.858372, lng: 2.294481 }; // Eiffel Tower
 
     map = new google.maps.Map(document.getElementById("map"), {
         mapId: "MY_MAP_ID",
@@ -100,6 +100,15 @@ function loadMap() {
             mapTypeIds: ["roadmap", "hide_poi"]
         }
     })
+
+    fetch('places.json')
+        .then(response => response.json())
+        .then(data => {
+            displayPlaces(data);
+        })
+        .catch(error => {
+            console.error('Error fetching places:', error);
+        });
 
     hidePointsOfInterest(map)
 
@@ -119,6 +128,42 @@ function loadMap() {
     directionsRenderer = new google.maps.DirectionsRenderer();
     directionsRenderer.setMap(map);
     directionsRenderer.setPanel(document.getElementById("directions"));
+}
+
+function displayPlaces(places) {
+    const placesContainer = document.getElementById('placesContainer');
+    places.forEach(place => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        const content = `
+        <h3>${place.name}</h3>
+        <p>${place.description}</p>
+        <p>${place.address}</p>
+        <img src="${place.image}">
+        `;
+
+        card.innerHTML = content;
+        placesContainer.appendChild(card);
+
+        const marker = new google.maps.Marker({
+            position: { lat: place.lat, lng: place.lng },
+            map: map,
+            title: place.name
+        });
+
+        marker.addListener('click', () => {
+            const infoWindow = new google.maps.InfoWindow({
+                content: `<div style="text-align: center; max-width: 250px;">
+                <h3>${place.name}</h3>
+                <p>${place.description}</p>
+                <p>${place.address}</p>
+                <img src="${place.image}" style="height: 100px; border-radius: 100px;">
+                </div>`
+            });
+            infoWindow.open(map, marker);
+        });
+    });
 }
 
 function calculateRoute(travelMode) {
