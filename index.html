@@ -83,6 +83,53 @@
 
     <div class="ac_currencySection">
         <h1>Currency Converter</h1>
+        <select id="ac_fromCurrency">
+            <option value="SGD">SGD</option>
+            <option value="MYR">MYR</option>
+            <option value="EUR">EUR</option>
+            <option value="EUR">USD</option>
+            <option value="EUR">AUD</option>
+            <option value="EUR">JPY</option>
+            <option value="EUR">CNH</option>
+            <option value="EUR">HKD</option>
+            <option value="EUR">CAD</option>
+            <option value="EUR">INR</option>
+            <option value="EUR">DKK</option>
+            <option value="EUR">GBP</option>
+            <option value="EUR">RUB</option>
+            <option value="EUR">NZD</option>
+            <option value="EUR">MXN</option>
+            <option value="EUR">IDR</option>
+            <option value="EUR">TWD</option>
+            <option value="EUR">THB</option>
+            <option value="EUR">VND</option>
+        </select>
+
+        <input type="number" id="ac_amount" placeholder="Enter amount">
+
+        <select id="ac_toCurrency">
+            <option value="MYR">MYR</option>
+            <option value="SGD">SGD</option>
+            <option value="EUR">EUR</option>
+            <option value="EUR">USD</option>
+            <option value="EUR">AUD</option>
+            <option value="EUR">JPY</option>
+            <option value="EUR">CNH</option>
+            <option value="EUR">HKD</option>
+            <option value="EUR">CAD</option>
+            <option value="EUR">INR</option>
+            <option value="EUR">DKK</option>
+            <option value="EUR">GBP</option>
+            <option value="EUR">RUB</option>
+            <option value="EUR">NZD</option>
+            <option value="EUR">MXN</option>
+            <option value="EUR">IDR</option>
+            <option value="EUR">TWD</option>
+            <option value="EUR">THB</option>
+            <option value="EUR">VND</option>
+        </select>
+        <button onclick="convertCurrency()">Convert</button>
+        <div id="ac_conversionResult"></div>
     </div>
 
     <img class="ac_skyline" src="images/footer.png">

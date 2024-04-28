@@ -239,7 +239,7 @@ async function displayWeather() {
 
         forecast.slice(1, 3).forEach((forecastDay, index) => {
             const forecastCard = document.createElement('div');
-            forecastCard.classList.add('ac_forecastCard');            
+            forecastCard.classList.add('ac_forecastCard');
             forecastCard.innerHTML = `
                         <h3>${index === 0 ? 'Tomorrow' : 'The Day After'}</h3>
                         <p>Date: ${forecastDay.date}</p>
@@ -264,18 +264,27 @@ window.onload = function () {
     displayWeather();
 };
 
-/*
-function translateIntoFrench() {
-    const englishText = encodeURI(document.getElementById('englishText').value)
-    const tranlationLanuage = `fr`
-    const url = `https://translation.googleapis.com/language/translate/v2?key=AIzaSyDR2wBzU8CxxOwi3Pb241I5Se0Ke6W5=${englishText}&source=en&target=${tranlationLanuage}`
+async function convertCurrency() {
+    const fromCurrency = document.getElementById('ac_fromCurrency').value;
+    const toCurrency = document.getElementById('ac_toCurrency').value;
+    const amount = document.getElementById('ac_amount').value;
+    const conversionResultDiv = document.getElementById('ac_conversionResult');
+    
+    const url = `https://currency-exchange.p.rapidapi.com/exchange?from=${fromCurrency}&to=${toCurrency}&q=${amount}`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '3df6feeb79mshd8b36d9595f9396p10f4f4jsnc42486578bab',
+            'X-RapidAPI-Host': 'currency-exchange.p.rapidapi.com'
+        }
+    };
 
-    fetch(url)
-        .then(response => response.json())
-        .then(jsonData => {
-            document.getElementById('frenchTranslationContainer').style.display = 'block'
-            document.getElementById('translation').innerHTML = `<input type="text" readonly id="translation" value="${jsonData.data.translations[0].translatedText}"/>`
-
-        })
+    try {
+        const response = await fetch(url, options);
+        const result = await response.text();
+        conversionResultDiv.textContent = `Converted Amount: ${result}`;
+    } catch (error) {
+        console.error(error);
+        conversionResultDiv.textContent = 'An error occurred. Please try again.';
+    }
 }
-*/
