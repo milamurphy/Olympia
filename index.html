@@ -2,6 +2,18 @@
 <html>
 
 <head>
+    <link rel="manifest" href="manifest.json">
+
+    <!-- ios support -->
+    <link rel="icon" href="images/olympicslogo.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/olympicslogo.png">
+    <meta name="msapplication-TileImage" content="images/olympicslogo.png">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="theme-color" content="white">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Olympia">
+
     <link rel="stylesheet" type="text/css" href="scss/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,10 +83,10 @@
             <button onclick="calculateRoute('TRANSIT')"><i class="material-icons">Bus</i></button>
             <button onclick="calculateRoute('BICYCLING')"><i class="material-icons">Bike</i></button>
             <button onclick="calculateRoute('WALKING')"><i class="material-icons">Walk</i></button>
-        
+
             <input type="button" onclick="calculateRoute()" id="submit" value="Submit">
         </div>
-        
+
         <div id=map></div>
         <details id="directionsDetails">
             <summary>Directions</summary>
@@ -84,6 +96,7 @@
 
     <div class="ac_touristSection" id="ac_touristSection">
         <h1>Tourist Highlights</h1>
+        <div id="placesTable"></div>
     </div>
 
     <h1 style="margin-left: 50px">Weather</h1>
@@ -159,6 +172,15 @@
         <p>Footer information here</p>
     </div>
 
+    <script>
+        window.addEventListener('load', () =>
+        {
+            if ("serviceWorker" in navigator)
+            {
+                navigator.serviceWorker.register("sw_offline_first.js")
+            }
+        })
+    </script>
     <script src="script.js"></script>
     <script
         src=https://maps.googleapis.com/maps/api/js?key=AIzaSyDR2wBzU8CxxOwi3Pb241I5Se0Ke6W5-lg&loading=async&callback=loadMap&libraries=marker,places></script>

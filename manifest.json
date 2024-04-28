@@ -1,0 +1,29 @@
+{
+    "name": "Olympia",
+    "short_name": "Olympia",
+    "description": "Paris Olympics 2024",
+    "start_url": "/index.html",
+    "scope": ".",
+    "display": "standalone",
+    "background_color": "white",
+    "theme_color": "white",
+    "orientation": "any",
+    "icons": [
+        {
+            "src": "images/olympicslogo.png",
+            "sizes": "16x16 64x64",
+            "type": "image/png"
+        },
+        {
+            "src": "images/olympicslogo.png",
+            "sizes": "128x128 512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "images/olympicslogo.png",
+            "sizes": "1024x1024",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

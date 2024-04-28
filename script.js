@@ -161,10 +161,39 @@ function calculateRoute(travelMode) {
 
 function getNearbyServicesMarkers(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
+        let table = document.createElement('table');
+
+        let headerRow = table.insertRow();
+        let imageHeader = headerRow.insertCell(0);
+        let nameHeader = headerRow.insertCell(1);
+        let addressHeader = headerRow.insertCell(2);
+        let ratingHeader = headerRow.insertCell(3);
+
+        imageHeader.innerHTML = '<b>Image</b>';
+        nameHeader.innerHTML = '<b>Name</b>';
+        addressHeader.innerHTML = '<b>Address</b>';
+        ratingHeader.innerHTML = '<b>Rating</b>';
+
         results.forEach(result => {
-            console.log(result);
-            createMarker(result)
-        })
+            let row = table.insertRow();
+            let imageCell = row.insertCell(0);
+
+            if (result.photos && result.photos.length > 0) {
+                imageCell.innerHTML = '<img src="' + result.photos[0].getUrl({ maxWidth: 100 }) + '">';
+            } else {
+                imageCell.innerHTML = 'No Image Available';
+            }
+
+            row.insertCell(1).innerHTML = result.name;
+            row.insertCell(2).innerHTML = result.vicinity || "Address not available";
+            row.insertCell(3).innerHTML = result.rating || "Rating not available";
+        });
+
+        document.getElementById("placesTable").appendChild(table);
+
+        results.forEach(result => {
+            createMarker(result);
+        });
     }
 }
 
