@@ -251,6 +251,36 @@ div.gm-style .gm-style-iw-tc::after {
     opacity: 0;
 }
 
+.ac_inputWeather {
+	display: flex;
+    align-items: center;
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
+.ac_searchInput {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.ac_searchButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ac_searchButton:hover {
+    background-color: #45a049;
+}
+
 .ac_weatherSection {
     padding: 20px;
 	display: flex;
@@ -258,12 +288,13 @@ div.gm-style .gm-style-iw-tc::after {
 }
 
 .ac_weatherCard {
+	color: $white;
     margin-left: 20px;
 	flex: 1;
-	padding: 10px;
-	background-color: white;
+	padding: 20px;
 	border-radius: 25px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 }
 
 .ac_touristSection {
@@ -274,6 +305,10 @@ div.gm-style .gm-style-iw-tc::after {
     width: 100%;
     margin: 0;
     display: block;
+}
+
+.ac_currencySection {
+	margin: 50px;
 }
 
 .ac_footer {

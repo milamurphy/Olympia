@@ -64,9 +64,11 @@
         <h1>Tourist Highlights</h1>
     </div>
 
-
-    <input type="text" id="ac_cityInput" placeholder="Enter city name" value="Paris">
-    <button onclick="displayWeather()">Display weather</button>
+    <h1 style="margin-left: 50px">Weather</h1>
+    <div class="ac_inputWeather">
+        <input type="text" id="ac_cityInput" class="ac_searchInput" placeholder="Enter city name" value="Paris">
+        <button class="ac_searchButton" onclick="displayWeather()">Display weather</button>
+    </div>
 
     <div class="ac_weatherSection">
         <!-- Today -->
@@ -77,6 +79,10 @@
 
         <!-- The day after -->
         <div class="ac_weatherCard" id="ac_theDayAfter"></div>
+    </div>
+
+    <div class="ac_currencySection">
+        <h1>Currency Converter</h1>
     </div>
 
     <img class="ac_skyline" src="images/footer.png">

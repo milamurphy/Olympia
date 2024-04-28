@@ -201,12 +201,13 @@ async function displayWeather() {
         const forecast = result.forecast.forecastday;
 
         const currentWeatherDiv = document.getElementById('ac_currentWeather');
+        currentWeatherDiv.innerHTML = '';
         currentWeatherDiv.innerHTML = `<div>
-                <h3>Today</h3>
+                <h3>Current</h3>
                     <p>Place Name: ${location.name}</p>
                     <p>Country: ${location.country}</p>
-                    <p>Temperature (Celsius): ${currentWeather.temp_c}</p>
-                    <p>Wind Speed (km/h): ${currentWeather.wind_kph}</p>
+                    <p>Temperature: ${currentWeather.temp_c}&deg;C</p>
+                    <p>Wind Speed: ${currentWeather.wind_kph} km/h</p>
                     <p>Humidity: ${currentWeather.humidity}</p>
                     </div>
                 `;
@@ -215,16 +216,37 @@ async function displayWeather() {
         const tomorrowDiv = document.getElementById('ac_tomorrow');
         const theDayAfterDiv = document.getElementById('ac_theDayAfter');
 
+        /* Reference: https://cssgradient.io/ */
+        function setCardBackgroundColor(temperature, card) {
+            if (temperature < 10) {
+                card.style.background = 'rgb(0,47,99)';
+                card.style.background = 'linear-gradient(180deg, rgba(0,47,99,1) 30%, rgba(133,114,255,1) 100%)';
+            } else if (temperature >= 10 && temperature <= 15) {
+                card.style.background = 'rgb(47,147,179)';
+                card.style.background = 'linear-gradient(180deg, rgba(47,147,179,1) 56%, rgba(165,207,202,1) 80%, rgba(255,252,213,1) 100%)';
+            } else {
+                card.style.background = 'rgb(255,133,72)';
+                card.style.background = 'linear-gradient(180deg, rgba(255,133,72,1) 41%, rgba(255,240,114,1) 100%)';
+            }
+        }
+
+        setCardBackgroundColor(parseFloat(currentWeather.temp_c), currentWeatherDiv);
+        setCardBackgroundColor(parseFloat(forecast[1].day.avgtemp_c), tomorrowDiv);
+        setCardBackgroundColor(parseFloat(forecast[2].day.avgtemp_c), theDayAfterDiv);
+
+        tomorrowDiv.innerHTML = '';
+        theDayAfterDiv.innerHTML = '';
+
         forecast.slice(1, 3).forEach((forecastDay, index) => {
             const forecastCard = document.createElement('div');
-            forecastCard.classList.add('ac_forecastCard');
+            forecastCard.classList.add('ac_forecastCard');            
             forecastCard.innerHTML = `
                         <h3>${index === 0 ? 'Tomorrow' : 'The Day After'}</h3>
                         <p>Date: ${forecastDay.date}</p>
-                        <p>Min Temperature (Celsius): ${forecastDay.day.mintemp_c}</p>
-                        <p>Max Temperature (Celsius): ${forecastDay.day.maxtemp_c}</p>
-                        <p>Average Temperature (Celsius): ${forecastDay.day.avgtemp_c}</p>
-                        <p>Max Wind Speed (km/h): ${forecastDay.day.maxwind_kph}</p>
+                        <p>Min Temperature: ${forecastDay.day.mintemp_c}&deg;C</p>
+                        <p>Max Temperature: ${forecastDay.day.maxtemp_c}&deg;C</p>
+                        <p>Average Temperature: ${forecastDay.day.avgtemp_c}&deg;C</p>
+                        <p>Max Wind Speed: ${forecastDay.day.maxwind_kph} km/h</p>
                         <p>Average Humidity: ${forecastDay.day.avghumidity}</p>
                     `;
             if (index === 0) {
