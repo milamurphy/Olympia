@@ -84,40 +84,87 @@ var x = setInterval(function () {
 }, 1000);
 
 // google maps
+let map
+let service
+
 function loadMap() {
-    let dkitLocation = { lat: 53.98485693, lng: -6.39410164 }
+    let services_centre_location = { lat: 48.856614, lng: 2.3522219 }; // Paris
 
-
-    let map = new google.maps.Map(document.getElementById("map"), {
+    map = new google.maps.Map(document.getElementById("map"), {
         mapId: "MY_MAP_ID",
-        zoom: 16,
-        center: dkitLocation,
+        zoom: 17,
+        center: new google.maps.LatLng(services_centre_location),
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         mapTypeControlOptions: {
-            mapTypeIds: ["roadmap", "satellite", "hide_poi"]
+            mapTypeIds: ["roadmap", "hide_poi"]
         }
     })
 
     hidePointsOfInterest(map)
 
-    let infoWindow = null
+    service = new google.maps.places.PlacesService(map)
+
+    service.nearbySearch({
+        location: services_centre_location, // centre of the search
+        radius: 500, // radius (in metres) of the search
+        type: "cafe"
+    }, getNearbyServicesMarkers)
+}
+
+function getNearbyServicesMarkers(results, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+        results.forEach(result => {
+            console.log(result);
+            createMarker(result)
+        })
+    }
+}
+
+let infoWindow = null
+function createMarker(place) {
+    let icon = document.createElement("img")
+    icon.src = place.icon
+    icon.style.width = "20px"
+    icon.style.height = "20px"
 
     let marker = new google.maps.marker.AdvancedMarkerElement({
-        position: dkitLocation,
-        map: map
-    })
+        map: map,
+        content: icon,
+        position: place.geometry.location,
+    });
 
     if (infoWindow === null) {
         infoWindow = new google.maps.InfoWindow()
     }
 
     google.maps.event.addListener(marker, "click", () => {
-        infoWindow.setContent("DkIT")
-        infoWindow.open(map, marker)
+        request = {
+            placeId: place.place_id,
+            fields: [
+                "name",
+                "formatted_address",
+                "international_phone_number",
+                "icon",
+                "geometry",
+                "photos",
+                "rating",
+                "opening_hours",
+            ],
+        };
+
+        let address = place.vicinity || "Address not available";
+        let content = '<div id=ac_container><div class=ac_text><strong>' + place.name + '</strong><br>'
+
+        if (place.photos && place.photos.length > 0) {
+            content += '<img class=ac_backgroundImage src="' + place.photos[0].getUrl({ maxWidth: 200, maxHeight: 200 }) + '"><img class=ac_backgroundImage src=images/flagoutline.png><br>';
+        }
+
+        content += address + '</div></div>';
+
+        infoWindow.setContent(content);
+        infoWindow.open(map, marker);
     })
-
 }
-
 
 function hidePointsOfInterest(map) {
     let styles = [
@@ -133,6 +180,69 @@ function hidePointsOfInterest(map) {
     map.setMapTypeId("hide_poi")
 }
 
+
+async function displayWeather() {
+    const cityName = document.getElementById('ac_cityInput').value;
+    const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${cityName}&days=3`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '3df6feeb79mshd8b36d9595f9396p10f4f4jsnc42486578bab',
+            'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
+        }
+    };
+
+    try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+
+        const location = result.location;
+        const currentWeather = result.current;
+        const forecast = result.forecast.forecastday;
+
+        const currentWeatherDiv = document.getElementById('ac_currentWeather');
+        currentWeatherDiv.innerHTML = `<div>
+                <h3>Today</h3>
+                    <p>Place Name: ${location.name}</p>
+                    <p>Country: ${location.country}</p>
+                    <p>Temperature (Celsius): ${currentWeather.temp_c}</p>
+                    <p>Wind Speed (km/h): ${currentWeather.wind_kph}</p>
+                    <p>Humidity: ${currentWeather.humidity}</p>
+                    </div>
+                `;
+
+
+        const tomorrowDiv = document.getElementById('ac_tomorrow');
+        const theDayAfterDiv = document.getElementById('ac_theDayAfter');
+
+        forecast.slice(1, 3).forEach((forecastDay, index) => {
+            const forecastCard = document.createElement('div');
+            forecastCard.classList.add('ac_forecastCard');
+            forecastCard.innerHTML = `
+                        <h3>${index === 0 ? 'Tomorrow' : 'The Day After'}</h3>
+                        <p>Date: ${forecastDay.date}</p>
+                        <p>Min Temperature (Celsius): ${forecastDay.day.mintemp_c}</p>
+                        <p>Max Temperature (Celsius): ${forecastDay.day.maxtemp_c}</p>
+                        <p>Average Temperature (Celsius): ${forecastDay.day.avgtemp_c}</p>
+                        <p>Max Wind Speed (km/h): ${forecastDay.day.maxwind_kph}</p>
+                        <p>Average Humidity: ${forecastDay.day.avghumidity}</p>
+                    `;
+            if (index === 0) {
+                tomorrowDiv.appendChild(forecastCard);
+            } else {
+                theDayAfterDiv.appendChild(forecastCard);
+            }
+        });
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+window.onload = function () {
+    displayWeather();
+};
+
+/*
 function translateIntoFrench() {
     const englishText = encodeURI(document.getElementById('englishText').value)
     const tranlationLanuage = `fr`
@@ -146,3 +256,4 @@ function translateIntoFrench() {
 
         })
 }
+*/

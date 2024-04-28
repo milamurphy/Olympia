@@ -1,69 +1,92 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <link rel="stylesheet" type="text/css" href="scss/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
 
-<div class="ac_navbar">
-    <a href="index.html"><img class="ac_logo" src="images/olympicslogo.png"></a>
-    <div class="ac_hamburger">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
+    <div class="ac_navbar">
+        <a href="index.html"><img class="ac_logo" src="images/olympicslogo.png"></a>
+        <div class="ac_hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="ac_navbarLinks">
+            <a href="#ac_olympicsSection">Olympics</a>
+            <a href="#ac_mapsSection">Get There</a>
+            <a href="#ac_touristSection">Tourist</a>
+        </div>
     </div>
-    <div class="ac_navbarLinks">
-        <a href="#olympics">Olympics</a>
-        <a href="#getthere">Get There</a>
-        <a href="#tourist">Tourist</a>
+    <div class="ac_textContainer">
+        <div class="ac_parisText">Paris</div>
+        <div class="ac_yearText">2024</div>
     </div>
-</div>
-<div class="ac_textContainer">
-    <div class="ac_parisText">Paris</div>
-    <div class="ac_yearText">2024</div>
-</div>
-<a href="#ac_olympicsSection"><img class="ac_fire" src="images/firelogo.png"></a>
-<div id="ac_parallax"></div>
+    <a href="#ac_olympicsSection"><img class="ac_fire" src="images/firelogo.png"></a>
+    <div id="ac_parallax"></div>
 
-<div class="ac_olympicsSection" id="ac_olympicsSection">
-    <div class="ac_leftColumn">
-        <img src="images/square.png">
-        <div id="ac_countdown"></div>
+    <div class="ac_olympicsSection" id="ac_olympicsSection">
+        <div class="ac_leftColumn">
+            <img src="images/square.png">
+            <div id="ac_countdown"></div>
+        </div>
+        <div class="ac_rightColumn">
+            <h1>THE UPCOMING OLYMPICS</h1>
+            <p>The world's greatest sporting event is coming to the City of Love. The Olympic Games are set to take
+                place in Paris, France from July 26th to August 11th 2024. This will be the third time that Paris has
+                hosted the Olympic Games, having previously done so in 1900 and 1924.</p>
+            <p>The majority of events will take place within the city of Paris and its immediate suburbs, with the main
+                Olympic Stadium located in the Île-de-France region. Iconic Parisian landmarks like the Eiffel Tower and
+                the Louvre will serve as backdrops for various competitions.</p>
+            <p>The 2024 Olympics will feature 32 sports and 329 events, including new additions like surfing,
+                skateboarding, and breaking. Many fan-favorite events like athletics, swimming, and gymnastics will also
+                return.</p>
+            <p>The Paris 2024 Organizing Committee has placed a strong emphasis on sustainability, with a goal of
+                hosting the first Olympic and Paralympic Games with a positive impact on the environment, aiming to
+                benefit Parisians for years to come, ensuring the Games have a transformative impact on the local
+                community.</p>
+        </div>
     </div>
-    <div class="ac_rightColumn">
-        <h1>THE UPCOMING OLYMPICS</h1>
-        <p>The world's greatest sporting event is coming to the City of Love. The Olympic Games are set to take place in Paris, France from July 26th to August 11th 2024. This will be the third time that Paris has hosted the Olympic Games, having previously done so in 1900 and 1924.</p>
-        <p>The majority of events will take place within the city of Paris and its immediate suburbs, with the main Olympic Stadium located in the Île-de-France region. Iconic Parisian landmarks like the Eiffel Tower and the Louvre will serve as backdrops for various competitions.</p>
-        <p>The 2024 Olympics will feature 32 sports and 329 events, including new additions like surfing, skateboarding, and breaking. Many fan-favorite events like athletics, swimming, and gymnastics will also return.</p>
-        <p>The Paris 2024 Organizing Committee has placed a strong emphasis on sustainability, with a goal of hosting the first Olympic and Paralympic Games with a positive impact on the environment, aiming to benefit Parisians for years to come, ensuring the Games have a transformative impact on the local community.</p>
+
+    <div class="ac_mapsSection">
+        <h1>Get There</h1>
+        <div id=map></div>
     </div>
-</div>
 
-<div class="ac_mapsSection">
-    <h1>Get There</h1>
-    <div id=map></div>
-</div>
+    <div class="ac_touristSection">
+        <h1>Tourist Highlights</h1>
+    </div>
 
-<div class="ac_touristSection">
-    <h1>Tourist Highlights</h1>
-</div>
 
-<img class="ac_skyline" src="images/footer.png">
-<div class="ac_footer">
-    <p>Footer information here</p>
-</div>
-<!-- 
-<label for="english">Text:</label><input type="text" id="englishText" onkeyup="document.getElementById('frenchTranslationContainer').style.display = 'none'"/> 
-<input type="button" value="Translate into French" onclick="translateIntoFrench()"/>
-<div id="frenchTranslationContainer">    
-    <label>French Translation: </label>
-    <div id="translation"></div>
-</div>  -->
+    <input type="text" id="ac_cityInput" placeholder="Enter city name" value="Paris">
+    <button onclick="displayWeather()">Display weather</button>
+
+    <div class="ac_weatherSection">
+        <!-- Today -->
+        <div class="ac_weatherCard" id="ac_currentWeather"></div>
+
+        <!-- Tomorrow -->
+        <div class="ac_weatherCard" id="ac_tomorrow"></div>
+
+        <!-- The day after -->
+        <div class="ac_weatherCard" id="ac_theDayAfter"></div>
+    </div>
+
+    <img class="ac_skyline" src="images/footer.png">
+    <div class="ac_footer">
+        <p>Footer information here</p>
+    </div>
 
     <script src="script.js"></script>
-    <script src=https://maps.googleapis.com/maps/api/js?key=AIzaSyDR2wBzU8CxxOwi3Pb241I5Se0Ke6W5-lg&loading=async&callback=loadMap&libraries=marker,places></script>
+    <script
+        src=https://maps.googleapis.com/maps/api/js?key=AIzaSyDR2wBzU8CxxOwi3Pb241I5Se0Ke6W5-lg&loading=async&callback=loadMap&libraries=marker,places></script>
 </body>
+
 </html>
