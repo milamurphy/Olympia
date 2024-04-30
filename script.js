@@ -88,6 +88,7 @@ let map
 let service
 let directionsRenderer
 
+/* Reference: https://developers.google.com/maps/documentation/places/web-service/details#Place */
 function loadMap() {
     let services_centre_location = { lat: 48.858372, lng: 2.294481 }; // Eiffel Tower
 
@@ -324,7 +325,7 @@ function hidePointsOfInterest(map) {
     map.setMapTypeId("hide_poi")
 } // end of google maps
 
-
+https://rapidapi.com/weatherapi/api/weatherapi-com/
 async function displayWeather() {
     const cityName = document.getElementById('ac_cityInput').value;
     const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${cityName}&days=3`;
@@ -408,6 +409,7 @@ window.onload = function () {
     displayWeather();
 };
 
+https://rapidapi.com/fyhao/api/currency-exchange/
 async function convertCurrency() {
     const fromCurrency = document.getElementById('ac_fromCurrency').value;
     const toCurrency = document.getElementById('ac_toCurrency').value;
