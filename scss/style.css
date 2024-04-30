@@ -18,6 +18,11 @@ body {
   font-style: normal;
   font-display: swap;
 }
+h1 {
+  font-family: "Paris 2024";
+  color: black;
+}
+
 .ac_container {
   margin-left: 50px;
 }
@@ -27,26 +32,60 @@ body {
   margin-left: 50px;
 }
 
-.ac_currencySection select, input, button {
+.ac_currencyInputSection {
+  width: 50vh;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  scroll-margin-top: 100px;
+}
+
+.ac_currencyContainer {
+  margin: 50px;
+}
+
+.ac_currencyContainer, .ac_currencySection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.ac_currencyInputSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.ac_currencySection {
+  flex: 1;
+}
+
+.ac_currencyContainer img {
+  max-width: 50%;
+  height: auto;
+}
+
+.ac_currencyInputSection select, input, button {
   width: 100%;
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 20px;
-  border: #d8d8d8;
-  border-radius: 5px;
+  border: #efefef;
+  border-radius: 10px;
   box-sizing: border-box;
 }
 
-.ac_currencySection button {
-  background-color: #0E868C;
+.ac_currencyInputSection button {
+  background-color: #007AFF;
   color: white;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.ac_currencySection button:hover {
-  background-color: #095a5e;
+.ac_currencyInputSection button:hover {
+  background-color: #0062cc;
 }
 
 .ac_navbar {
@@ -78,6 +117,7 @@ body {
 .ac_hamburger {
   cursor: pointer;
   display: none;
+  margin: 5px;
 }
 
 .ac_hamburger .bar {
@@ -119,14 +159,14 @@ body {
 }
 
 .ac_parisText {
-  font-size: 35vh;
+  font-size: 18vw;
 }
 
 .ac_yearText {
   position: relative;
   top: 100%;
-  margin-top: -10vh;
-  font-size: 20vh;
+  margin-top: -5vw;
+  font-size: 10vw;
 }
 
 #ac_parallax {
@@ -195,7 +235,7 @@ body {
 #map {
   width: auto;
   height: 80vh;
-  border: thin solid #d8d8d8;
+  border: thin solid #efefef;
   flex: 2;
 }
 
@@ -217,13 +257,14 @@ body {
   margin: 10px;
 }
 
-input[type=text] {
-  width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #d8d8d8;
+/*
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid $lightgrey;
 }
-
+*/
 #directions {
   width: 100%;
   margin: 0px;
@@ -340,22 +381,13 @@ input[type=text] {
 }
 
 #ac_placesTable tr:nth-child(even) {
-  background-color: #d8d8d8;
+  background-color: #efefef;
 }
 
 .ac_skyline {
   width: 100%;
   margin: 0;
   display: block;
-}
-
-.ac_currencySection {
-  max-width: 500px;
-  margin: 50px auto;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  scroll-margin-top: 100px;
 }
 
 #ac_conversionResult {
@@ -443,5 +475,30 @@ input[type=text] {
   }
   .ac_navbar.active .bar:nth-child(3) {
     transform: rotate(45deg) translate(-5px, -6px);
+  }
+  .address-column {
+    display: none;
+  }
+  .ac_currencyContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .ac_currencySection {
+    flex: initial;
+  }
+  .ac_currencyInputSection {
+    margin-top: 20px;
+  }
+}
+@media screen and (min-width: 728px) and (max-width: 1000px) {
+  .ac_currencyContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .ac_currencySection {
+    flex: initial;
+  }
+  .ac_currencyInputSection {
+    margin-top: 20px;
   }
 }/*# sourceMappingURL=style.css.map */

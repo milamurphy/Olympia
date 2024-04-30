@@ -4,8 +4,8 @@ $font: #363839;
 $gradient: linear-gradient(30deg, rgba(160, 210, 255, 1) 0%, rgba(88, 207, 159, 1) 100%);
 $footerbg: #3C3C3B;
 $transparent: transparent;
-$olympicblue: #0E868C;
-$lightgrey: #d8d8d8;
+$olympicblue: #007AFF;
+$lightgrey: #efefef;
 $subfont: #6d7072;
 
 html,
@@ -33,6 +33,11 @@ body {
     font-display: swap;
 }
 
+h1 {
+    font-family: 'Paris 2024';
+    color: $black;
+}
+
 .ac_container {
     margin-left: 50px;
 }
@@ -42,24 +47,58 @@ body {
     margin-left: 50px;
 }
 
-.ac_currencySection select, input, button {
+.ac_currencyInputSection {
+    width: 50vh;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    scroll-margin-top: 100px;
+}
+
+.ac_currencyContainer {
+    margin: 50px;
+}
+
+.ac_currencyContainer, .ac_currencySection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.ac_currencyInputSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.ac_currencySection {
+    flex: 1;
+}
+
+.ac_currencyContainer img {
+    max-width: 50%;
+    height: auto;
+}
+
+.ac_currencyInputSection select, input, button {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 20px;
     border: $lightgrey;
-    border-radius: 5px;
+    border-radius: 10px;
     box-sizing: border-box;
 }
 
-.ac_currencySection button {
+.ac_currencyInputSection button {
     background-color: $olympicblue;
     color: white;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-.ac_currencySection button:hover {
+.ac_currencyInputSection button:hover {
     background-color: darken($olympicblue, 10%);
 }
 
@@ -92,6 +131,7 @@ body {
 .ac_hamburger {
     cursor: pointer;
     display: none;
+    margin: 5px;
 }
 
 .ac_hamburger .bar {
@@ -133,15 +173,15 @@ body {
 }
 
 .ac_parisText {
-    font-size: 35vh;
+    font-size: 18vw;
 }
 
 .ac_yearText {
     position: relative;
     top: 100%;
-    margin-top: -10vh;
+    margin-top: -5vw;
     //transform: translate(-12%, -60%);
-    font-size: 20vh;
+    font-size: 10vw;
 }
 
 #ac_parallax {
@@ -232,12 +272,14 @@ body {
     margin: 10px;
 }
 
+/*
 input[type="text"] {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid $lightgrey;
 }
+*/
 
 #directions {
     width: 100%;
@@ -362,22 +404,11 @@ input[type="text"] {
     display: block;
 }
 
-.ac_currencySection {
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    scroll-margin-top: 100px;
-}
-
 #ac_conversionResult {
     text-align: center;
     font-weight: bold;
     margin-top: 20px;
 }
-
-
 
 .ac_footer {
     width: 100%;
@@ -471,5 +502,37 @@ input[type="text"] {
 
     .ac_navbar.active .bar:nth-child(3) {
         transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .address-column {
+        display: none;
+    }
+    
+    .ac_currencyContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ac_currencySection {
+        flex: initial;
+    }
+
+    .ac_currencyInputSection {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (min-width: 728px) and (max-width: 1000px) {
+    .ac_currencyContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ac_currencySection {
+        flex: initial;
+    }
+
+    .ac_currencyInputSection {
+        margin-top: 20px;
     }
 }

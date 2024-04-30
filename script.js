@@ -234,7 +234,9 @@ function getNearbyServicesMarkers(results, status) {
             }
 
             row.insertCell(1).innerHTML = result.name;
-            row.insertCell(2).innerHTML = result.vicinity || "Address not available";
+            let addressCell = row.insertCell(2);
+            addressCell.className = 'address-column';
+            addressCell.innerHTML = result.vicinity || "Address not available";
             row.insertCell(3).innerHTML = result.rating || "Rating not available";
         });
 
