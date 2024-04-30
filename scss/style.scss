@@ -289,41 +289,19 @@ input[type="text"] {
 }
 
 #ac_container {
+    padding: 10px;
+    margin: auto;
     position: relative;
-    width: 300px;
-    height: 200px;
+    border-radius: 50px;
+    text-align: center;
 }
 
-.ac_text {
-    background-color: white;
-    color: black;
-    opacity: 0.6;
-    z-index: 1;
-    position: absolute;
-    padding: 0px;
-    margin: 0px;
-    top: 45px;
-    left: 40px;
-    width: 220px;
-    height: 80px;
-    font-size: 18px;
-    overflow: auto;
-    scrollbar-color: white #cccccc;
-}
-
-#ac_content {
-    width: 200px;
-    height: 200px;
-}
-
-#ac_content img {
-    clear: both;
-    float: left;
-    width: 150px;
+#ac_container img {
     border-radius: 100px;
-    margin: 20px;
-    margin-top: 0px;
-    border: thin solid #CCC;
+    height: 100px;
+    width: 100px;
+    display: block;
+    margin: 0 auto;
 }
 
 .ac_inputWeather {

@@ -296,13 +296,14 @@ function createMarker(place) {
         };
 
         let address = place.vicinity || "Address not available";
-        let content = '<div id=ac_container><div class=ac_text><strong>' + place.name + '</strong><br>'
+        let content = '<div id=ac_container><strong>' + place.name + '</strong><br><br>'
+        content += address += '<br><br>'
 
         if (place.photos && place.photos.length > 0) {
-            content += '<img class=ac_backgroundImage src="' + place.photos[0].getUrl({ maxWidth: 200, maxHeight: 200 }) + '"><img class=ac_backgroundImage src=images/flagoutline.png><br>';
+            content += '<img src="' + place.photos[0].getUrl({ maxWidth: 200, maxHeight: 200 }) + '">';
         }
 
-        content += address + '</div></div>';
+        content += '</div></div>';
 
         infoWindow.setContent(content);
         infoWindow.open(map, marker);
