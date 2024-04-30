@@ -5,6 +5,8 @@ body {
   font-family: "Roboto", sans-serif;
   color: #363839;
   font-size: 20px;
+  overflow-x: hidden;
+  color: #363839;
 }
 
 /* Reference: https://stackoverflow.com/questions/24990554/how-to-include-a-font-ttf-using-css */
@@ -16,6 +18,37 @@ body {
   font-style: normal;
   font-display: swap;
 }
+.ac_container {
+  margin-left: 50px;
+}
+
+.ac_subFont {
+  color: #6d7072;
+  margin-left: 50px;
+}
+
+.ac_currencySection select, input, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: #d8d8d8;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.ac_currencySection button {
+  background-color: #0E868C;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ac_currencySection button:hover {
+  background-color: #095a5e;
+}
+
 .ac_navbar {
   font-family: "Paris 2024";
   position: fixed;
@@ -155,23 +188,40 @@ body {
 .ac_mapsSection {
   margin: 50px;
   scroll-margin-top: 100px;
+  display: flex;
+  flex-direction: row;
 }
 
 #map {
   width: auto;
   height: 80vh;
-  border: thin solid #ccc;
+  border: thin solid #d8d8d8;
+  flex: 2;
 }
 
-#controlPanel {
-  background-color: #fff;
+#ac_controlPanel {
   margin-bottom: 50px;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  flex: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.selectLocationLabel {
+#ac_controlPanel button:hover {
+  cursor: pointer;
+}
+
+.ac_selectLocationLabel {
   font-weight: bold;
-  min-width: 40px;
-  display: inline-block;
+  margin: 10px;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #d8d8d8;
 }
 
 #directions {
@@ -271,6 +321,31 @@ body {
   scroll-margin-top: 100px;
 }
 
+#ac_placesTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#ac_placesTable img {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+}
+
+#ac_placesTable th,
+#ac_placesTable td {
+  padding: 8px;
+  text-align: left;
+}
+
+#ac_placesTable th {
+  background-color: #f2f2f2;
+}
+
+.even-row {
+  background-color: #f9f9f9;
+}
+
 .ac_skyline {
   width: 100%;
   margin: 0;
@@ -278,8 +353,18 @@ body {
 }
 
 .ac_currencySection {
-  margin: 50px;
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   scroll-margin-top: 100px;
+}
+
+#ac_conversionResult {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 20px;
 }
 
 .ac_footer {
@@ -288,6 +373,13 @@ body {
   color: white;
   margin: 0;
   padding: 20px;
+}
+
+.ac_footer a {
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  display: block;
 }
 
 .ac_footer p {
@@ -323,16 +415,12 @@ body {
     margin-top: 20px;
     width: 80%;
   }
-  #ac_countdown {
-    position: static; /* Reset position */
-    width: 100%; /* Ensure countdown width is full */
-    left: auto; /* Reset left position */
-    top: auto; /* Reset top position */
-    margin-top: 20px; /* Add some space between countdown and text */
+  .ac_mapsSection {
+    flex-direction: column;
+    margin: 20px;
   }
   .ac_navbarLinks {
     display: none;
-    /* Hide navbar links by default */
     flex-direction: column;
     position: absolute;
     top: 70px;
@@ -343,14 +431,12 @@ body {
   }
   .ac_navbarLinks.active {
     display: flex;
-    /* Show navbar links when active */
   }
   .ac_navbarLinks a {
     padding: 10px 0;
   }
   .ac_hamburger {
     display: block;
-    /* Show hamburger icon */
   }
   .ac_navbar.active .bar:nth-child(1) {
     transform: rotate(-45deg) translate(-5px, 6px);

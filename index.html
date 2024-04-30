@@ -2,9 +2,11 @@
 <html>
 
 <head>
-    <link rel="manifest" href="manifest.json">
+    <!--
+    <link rel="manifest" href="manifest.json"> -->
 
     <!-- ios support -->
+    <!--
     <link rel="icon" href="images/olympicslogo.png" type="image/png">
     <link rel="apple-touch-icon" href="images/olympicslogo.png">
     <meta name="msapplication-TileImage" content="images/olympicslogo.png">
@@ -12,7 +14,7 @@
     <meta name="theme-color" content="white">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Olympia">
+    <meta name="apple-mobile-web-app-title" content="Olympia"> -->
 
     <link rel="stylesheet" type="text/css" href="scss/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,6 +22,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel=stylesheet>
 </head>
 
 <body>
@@ -69,38 +72,44 @@
         </div>
     </div>
 
+    <h1 class="ac_container">Get There</h1>
     <div class="ac_mapsSection" id="ac_mapsSection">
-        <h1>Get There</h1>
-        <div id="controlPanel">
-            <span class="selectLocationLabel">Start:</span>
+        <div id="ac_controlPanel">
+            <span class="ac_selectLocationLabel">Start:</span>
             <input id="start" type="text"><br>
-            <span class="selectLocationLabel">End:</span>
+            <span class="ac_selectLocationLabel">End:</span>
             <input id="end" type="text"><br>
-            <span class="selectLocationLabel">Additional Stops:</span>
+            <span class="ac_selectLocationLabel">Additional Stops:</span>
             <input id="waypoints" type="text" placeholder="Enter stops separated by commas"><br>
-
-            <button onclick="calculateRoute('DRIVING')"><i class="material-icons">Car</i></button>
-            <button onclick="calculateRoute('TRANSIT')"><i class="material-icons">Bus</i></button>
-            <button onclick="calculateRoute('BICYCLING')"><i class="material-icons">Bike</i></button>
-            <button onclick="calculateRoute('WALKING')"><i class="material-icons">Walk</i></button>
-
+            <button><i class=material-icons onclick="calculateRoute('DRIVING')">directions_car</i></button>
+            <button><i class=material-icons onclick="calculateRoute('TRANSIT')">directions_bus</i></button>
+            <button><i class=material-icons onclick="calculateRoute('BICYCLING')">directions_bike</i></button>
+            <button><i class=material-icons onclick="calculateRoute('WALKING')">directions_walk</i></button>
             <input type="button" onclick="calculateRoute()" id="submit" value="Submit">
         </div>
-
         <div id=map></div>
-        <details id="directionsDetails">
-            <summary>Directions</summary>
-            <div id="directionsPanel"></div>
-        </details>
     </div>
+    <details id="directionsDetails" class="ac_container">
+        <summary>Directions</summary>
+        <div id="directionsPanel"></div>
+    </details>
 
     <div class="ac_touristSection" id="ac_touristSection">
         <h1>Tourist Highlights</h1>
-        <div id="placesContainer"></div>
-        <div id="placesTable"></div>
+        <div id="ac_placesContainer"></div>
+        <select id="ratingFilter">
+            <option value="all">All Ratings</option>
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+        </select>
+        <div id="ac_placesTable"></div>
     </div>
 
     <h1 style="margin-left: 50px">Weather</h1>
+    <p class="ac_subFont">Ensure you're prepared for the weather!</p>
     <div class="ac_inputWeather">
         <input type="text" id="ac_cityInput" class="ac_searchInput" placeholder="Enter city name" value="Paris">
         <button class="ac_searchButton" onclick="displayWeather()">Display weather</button>
@@ -117,8 +126,9 @@
         <div class="ac_weatherCard" id="ac_theDayAfter"></div>
     </div>
 
+    <h1 class="ac_container">Currency Converter</h1>
+    <p class="ac_subFont">France uses the Euro. Convert your local currency to see the exchange rates!</p>
     <div class="ac_currencySection" id="ac_currencySection">
-        <h1>Currency Converter</h1>
         <select id="ac_fromCurrency">
             <option value="SGD">SGD</option>
             <option value="MYR">MYR</option>
@@ -170,18 +180,21 @@
 
     <img class="ac_skyline" src="images/footer.png">
     <div class="ac_footer">
-        <p>Footer information here</p>
+        <a href="#ac_olympicsSection">Olympics</a>
+        <a href="#ac_mapsSection">Get There</a>
+        <a href="#ac_touristSection">Tourist</a>
+        <a href="#ac_weatherSection">Weather</a>
+        <a href="#ac_currencySection">Currency</a>
     </div>
 
+    <!--
     <script>
-        window.addEventListener('load', () =>
-        {
-            if ("serviceWorker" in navigator)
-            {
+        window.addEventListener('load', () => {
+            if ("serviceWorker" in navigator) {
                 navigator.serviceWorker.register("sw_offline_first.js")
             }
         })
-    </script>
+    </script>-->
     <script src="script.js"></script>
     <script
         src=https://maps.googleapis.com/maps/api/js?key=AIzaSyDR2wBzU8CxxOwi3Pb241I5Se0Ke6W5-lg&loading=async&callback=loadMap&libraries=marker,places></script>

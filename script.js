@@ -1,7 +1,6 @@
 window.onscroll = function () {
     var navbar = document.querySelector('.ac_navbar');
     var logo = document.querySelector('.ac_logo');
-    var paristext = document.querySelector('.ac_parisText');
     var scrollPosition = window.scrollY;
 
     if (scrollPosition > 350) {
@@ -23,7 +22,7 @@ window.onscroll = function () {
             paristext.style.opacity = '1';
             paristext.style.transform = 'translate(-50%, -50%)';
         }
-        */
+        
 
     // Reference: https://www.youtube.com/watch?v=by-3r2eqMXA
     const bg = document.getElementById('ac_parallax');
@@ -36,6 +35,7 @@ window.onscroll = function () {
             bg.style.backgroundSize = 'cover';
         }
     })
+    */
 }
 
 const slideshow = document.getElementById('ac_parallax');
@@ -122,29 +122,33 @@ function loadMap() {
     service.nearbySearch({
         location: services_centre_location, // centre of the search
         radius: 500, // radius (in metres) of the search
-        type: "cafe"
+        type: "restaurant"
     }, getNearbyServicesMarkers)
 
     directionsRenderer = new google.maps.DirectionsRenderer();
     directionsRenderer.setMap(map);
     directionsRenderer.setPanel(document.getElementById("directions"));
-}
+} // end of loadMap
 
 function displayPlaces(places) {
-    const placesContainer = document.getElementById('placesContainer');
+    //const placesContainer = document.getElementById('ac_placesContainer');
     places.forEach(place => {
+        /*
         const card = document.createElement('div');
-        card.classList.add('card');
-
+        card.classList.add('ac_card');
+        
         const content = `
+        <div class="ac_card">
+        <img src="${place.image}">
         <h3>${place.name}</h3>
         <p>${place.description}</p>
         <p>${place.address}</p>
-        <img src="${place.image}">
+        </div>
         `;
 
         card.innerHTML = content;
         placesContainer.appendChild(card);
+        */
 
         const marker = new google.maps.Marker({
             position: { lat: place.lat, lng: place.lng },
@@ -234,10 +238,25 @@ function getNearbyServicesMarkers(results, status) {
             row.insertCell(3).innerHTML = result.rating || "Rating not available";
         });
 
-        document.getElementById("placesTable").appendChild(table);
+        document.getElementById("ac_placesTable").appendChild(table);
 
         results.forEach(result => {
             createMarker(result);
+        });
+
+        document.getElementById('ratingFilter').addEventListener('change', function() {
+            let selectedRange = parseFloat(this.value);
+            let rows = table.getElementsByTagName('tr');
+            for (let i = 1; i < rows.length; i++) {
+                let ratingCell = rows[i].getElementsByTagName('td')[3];
+                let rating = parseFloat(ratingCell.textContent);
+                if ((selectedRange === 0 && rating >= 0 && rating < 1) ||
+                    (rating >= selectedRange && rating < selectedRange + 1)) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
         });
     }
 }
