@@ -1,516 +1,463 @@
-$white: white;
+$darkgrey: #363839;
 $black: black;
-$font: #363839;
-$gradient: linear-gradient(30deg, rgba(160, 210, 255, 1) 0%, rgba(88, 207, 159, 1) 100%);
-$footerbg: #3C3C3B;
+$lightgrey: #6d7072;
+$white: white;
+$roboto: "Roboto", sans-serif;
+$paris: 'Paris 2024';
+$olympicblue: #007aff;
 $transparent: transparent;
-$olympicblue: #007AFF;
-$lightgrey: #efefef;
-$subfont: #6d7072;
-
-html,
-body {
-    margin: 0;
-    scroll-behavior: smooth;
-    font-family: "Roboto", sans-serif;
-    color: $font;
-    font-size: 20px;
-    overflow-x: hidden;
-    color: $font;
-}
+$palegrey: #efefef;
+$footer: #3c3c3b;
 
 /* Reference: https://stackoverflow.com/questions/24990554/how-to-include-a-font-ttf-using-css */
 @font-face {
-    font-family: 'Paris 2024';
-    src: url('../fonts/Paris2024-Variable-Regular.eot');
-    src: url('../fonts/Paris2024-Variable-Regular.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/Paris2024-Variable-Regular.woff2') format('woff2'),
-        url('../fonts/Paris2024-Variable-Regular.woff') format('woff'),
-        url('../fonts/Paris2024-Variable-Regular.ttf') format('truetype'),
-        url('../fonts/Paris2024-Variable-Regular.svg#Paris2024-Variable-Regular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+	font-family: 'Paris 2024';
+	src: url('../fonts/Paris2024-Variable-Regular.eot');
+	src: url('../fonts/Paris2024-Variable-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/Paris2024-Variable-Regular.woff2') format('woff2'), url('../fonts/Paris2024-Variable-Regular.woff') format('woff'), url('../fonts/Paris2024-Variable-Regular.ttf') format('truetype'), url('../fonts/Paris2024-Variable-Regular.svg#Paris2024-Variable-Regular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+/* input[type="text"] {
+	 width: 100%;
+	 padding: 8px;
+	 margin-bottom: 10px;
+	 border: 1px solid $lightgrey;
+}
+ */
+html, body {
+	margin: 0;
+	scroll-behavior: smooth;
+	font-family: $roboto;
+	color: $darkgrey;
+	font-size: 20px;
+	overflow-x: hidden;
 }
 
 h1 {
-    font-family: 'Paris 2024';
-    color: $black;
+	font-family: $paris;
+	color: $black;
 }
-
 .ac_container {
-    margin-left: 50px;
+	margin-left: 50px;
 }
-
 .ac_subFont {
-    color: $subfont;
-    margin-left: 50px;
+	color: $lightgrey;
+	margin-left: 50px;
 }
-
 .ac_currencyInputSection {
-    width: 50vh;
-    margin: 50px auto;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    scroll-margin-top: 100px;
+	width: 50vh;
+	margin: 50px auto;
+	padding: 20px;
+	border-radius: 15px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	scroll-margin-top: 100px;
+	display: flex;
+	flex-direction: column;
+	select {
+		width: 100%;
+		padding: 10px;
+		margin-top: 10px;
+		margin-bottom: 20px;
+		border: #efefef;
+		border-radius: 10px;
+		box-sizing: border-box;
+	}
+	button {
+		background-color: $olympicblue;
+		color: $white;
+		border: none;
+		cursor: pointer;
+		transition: background-color 0.3s ease;
+		&:hover {
+			background-color: $black;
+		}
+	}
 }
-
 .ac_currencyContainer {
-    margin: 50px;
+	margin: 50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	img {
+		max-width: 50%;
+		height: auto;
+	}
 }
-
-.ac_currencyContainer, .ac_currencySection {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.ac_currencyInputSection {
-    display: flex;
-    flex-direction: column;
-}
-
 .ac_currencySection {
-    flex: 1;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	flex: 1;
 }
-
-.ac_currencyContainer img {
-    max-width: 50%;
-    height: auto;
+input {
+	width: 100%;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	border: #efefef;
+	border-radius: 10px;
+	box-sizing: border-box;
 }
-
-.ac_currencyInputSection select, input, button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    border: $lightgrey;
-    border-radius: 10px;
-    box-sizing: border-box;
+button {
+	width: 100%;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	border: #efefef;
+	border-radius: 10px;
+	box-sizing: border-box;
 }
-
-.ac_currencyInputSection button {
-    background-color: $olympicblue;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.ac_currencyInputSection button:hover {
-    background-color: darken($olympicblue, 10%);
-}
-
 .ac_navbar {
-    font-family: 'Paris 2024';
-    position: fixed;
-    top: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    transition: 0.3s;
-    font-size: 25px;
-    z-index: 2;
-    background-color: $transparent;
+	font-family: $paris;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	transition: 0.3s;
+	font-size: 25px;
+	z-index: 2;
+	background-color: $transparent;
 }
-
 .ac_navbarLinks {
-    display: flex;
-    margin-right: 20px;
+	display: flex;
+	margin-right: 20px;
+	a {
+		color: $white;
+		align-items: center;
+		text-decoration: none;
+		padding: 30px 20px;
+	}
 }
-
-.ac_navbarLinks a {
-    color: $white;
-    align-items: center;
-    text-decoration: none;
-    padding: 30px 20px;
-}
-
 .ac_hamburger {
-    cursor: pointer;
-    display: none;
-    margin: 5px;
+	cursor: pointer;
+	display: none;
+	margin: 5px;
+	.bar {
+		width: 25px;
+		height: 3px;
+		background-color: $white;
+		margin: 5px 0;
+		transition: 0.4s;
+	}
 }
-
-.ac_hamburger .bar {
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    margin: 5px 0;
-    transition: 0.4s;
-}
-
 .ac_logo {
-    height: 5vh;
-    padding: 30px;
-    transition: height 0.3s;
+	height: 5vh;
+	padding: 30px;
+	transition: height 0.3s;
 }
-
 .ac_fire {
-    height: 10vh;
-    position: absolute;
-    left: 50%;
-    bottom: 5%;
-    transform: translateX(-50%);
-    transition: transform 0.5s;
+	height: 10vh;
+	position: absolute;
+	left: 50%;
+	bottom: 5%;
+	transform: translateX(-50%);
+	transition: transform 0.5s;
+	&:hover {
+		transform: translateX(-50%) scale(0.9);
+		transform-origin: center;
+	}
 }
-
-.ac_fire:hover {
-    transform: translateX(-50%) scale(0.9);
-    transform-origin: center;
-}
-
 .ac_textContainer {
-    font-family: 'Paris 2024';
-    color: $white;
-    position: absolute;
-    top: 20%;
-    left: 12%;
-    transform: translate(-12%, -20%);
-    z-index: 1;
+	font-family: $font-family_2;
+	color: $white;
+	position: absolute;
+	top: 20%;
+	left: 12%;
+	transform: translate(-12%, -20%);
+	z-index: 1;
 }
-
 .ac_parisText {
-    font-size: 18vw;
+	font-size: 18vw;
 }
-
 .ac_yearText {
-    position: relative;
-    top: 100%;
-    margin-top: -5vw;
-    //transform: translate(-12%, -60%);
-    font-size: 10vw;
+	position: relative;
+	top: 100%;
+	margin-top: -5vw;
+	font-size: 10vw;
 }
-
 #ac_parallax {
-    /* Parallax reference: https://www.w3schools.com/howto/howto_css_parallax.asp */
-    background-image: url("../images/parisbg.jpg");
-    height: 100vh;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    transition: 0.5s;
+	background-image: url("../images/parisbg.jpg");
+	height: 100vh;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	transition: 0.5s;
 }
-
 .ac_blurFilter {
-    /* Blur filter reference: https://www.w3schools.com/cssref/css3_pr_backdrop-filter.php */
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(5px);
+	-webkit-backdrop-filter: blur(5px);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 .ac_olympicsSection {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    padding: 50px;
-    scroll-margin-top: 50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	padding: 50px;
+	scroll-margin-top: 50px;
 }
-
 .ac_leftColumn {
-    flex: 1;
-    position: relative;
+	flex: 1;
+	position: relative;
+	img {
+		max-width: 80vh;
+		height: auto;
+		border-radius: 40px;
+	}
 }
-
-.ac_leftColumn img {
-    max-width: 80vh;
-    height: auto;
-    border-radius: 40px;
-}
-
 .ac_rightColumn {
-    flex: 1;
-    padding-left: 20px;
+	flex: 1;
+	padding-left: 20px;
 }
-
 #ac_countdown {
-    font-size: 30px;
-    color: $white;
-    background: $gradient;
-    width: 35%;
-    padding: 10px;
-    text-align: center;
-    position: absolute;
-    top: 94%;
-    left: 60%;
-    border-radius: 25px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	font-size: 30px;
+	color: $white;
+	background: linear-gradient(30deg, rgba(160, 210, 255, 1) 0%, rgba(88, 207, 159, 1) 100%);
+	width: 35%;
+	padding: 10px;
+	text-align: center;
+	position: absolute;
+	top: 94%;
+	left: 60%;
+	border-radius: 25px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 .ac_mapsSection {
-    margin: 50px;
-    scroll-margin-top: 100px;
-    display: flex;
-    flex-direction: row;
+	margin: 50px;
+	scroll-margin-top: 100px;
+	display: flex;
+	flex-direction: row;
 }
-
 #map {
-    width: auto;
-    height: 80vh;
-    border: thin solid $lightgrey;
-    flex: 2;
+	width: auto;
+	height: 80vh;
+	border: thin solid #efefef;
+	flex: 2;
 }
-
 #ac_controlPanel {
-    margin-bottom: 50px;
-    padding: 20px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    flex: 1;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	margin-bottom: 50px;
+	padding: 20px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	flex: 1;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	button {
+		&:hover {
+			cursor: pointer;
+		}
+	}
 }
-
-#ac_controlPanel button:hover {
-    cursor: pointer;
-}
-
 .ac_selectLocationLabel {
-    font-weight: bold;
-    margin: 10px;
+	font-weight: bold;
+	margin: 10px;
 }
-
-/*
-input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid $lightgrey;
-}
-*/
-
 #directions {
-    width: 100%;
-    margin: 0px;
-    margin-top: 20px;
-    margin-bottom: 50px;
+	width: 100%;
+	margin: 0px;
+	margin-top: 20px;
+	margin-bottom: 50px;
 }
-
 #ac_container {
-    padding: 10px;
-    margin: auto;
-    position: relative;
-    border-radius: 50px;
-    text-align: center;
+	padding: 10px;
+	margin: auto;
+	position: relative;
+	border-radius: 50px;
+	text-align: center;
+	img {
+		border-radius: 100px;
+		height: 100px;
+		width: 100px;
+		display: block;
+		margin: 0 auto;
+	}
 }
-
-#ac_container img {
-    border-radius: 100px;
-    height: 100px;
-    width: 100px;
-    display: block;
-    margin: 0 auto;
-}
-
 .ac_inputWeather {
-    display: flex;
-    align-items: center;
-    margin-left: 50px;
-    margin-right: 50px;
+	display: flex;
+	align-items: center;
+	margin-left: 50px;
+	margin-right: 50px;
 }
-
 .ac_searchInput {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    flex: 1;
-    margin-right: 10px;
+	padding: 10px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	flex: 1;
+	margin-right: 10px;
 }
-
 .ac_searchButton {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+	padding: 10px 20px;
+	font-size: 16px;
+	background-color: $olympicblue;
+	color: $white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	&:hover {
+		background-color: $black;
+	}
 }
-
-.ac_searchButton:hover {
-    background-color: #45a049;
-}
-
 .ac_weatherSection {
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    scroll-margin-top: 220px;
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	scroll-margin-top: 220px;
 }
-
 .ac_weatherCard {
-    color: $white;
-    margin-left: 20px;
-    flex: 1;
-    padding: 20px;
-    border-radius: 25px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+	color: $white;
+	margin-left: 20px;
+	flex: 1;
+	padding: 20px;
+	border-radius: 25px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 }
-
 .ac_touristSection {
-    margin: 50px;
-    scroll-margin-top: 100px;
+	margin: 50px;
+	scroll-margin-top: 100px;
 }
-
 #ac_placesTable {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	img {
+		width: 100px;
+		height: 100px;
+		border-radius: 20px;
+	}
+	th {
+		padding: 8px;
+		text-align: left;
+	}
+	td {
+		padding: 8px;
+		text-align: left;
+	}
+	tr {
+		&:nth-child(even) {
+			background-color: $palegrey;
+		}
+	}
 }
-#ac_placesTable img {
-    width: 100px;
-    height: 100px;
-    border-radius: 20px;
-}
-#ac_placesTable th,
-#ac_placesTable td {
-    padding: 8px;
-    text-align: left;
-}
-
-#ac_placesTable tr:nth-child(even) {
-    background-color: $lightgrey;
-}
-
 .ac_skyline {
-    width: 100%;
-    margin: 0;
-    display: block;
+	width: 100%;
+	margin: 0;
+	display: block;
 }
-
 #ac_conversionResult {
-    text-align: center;
-    font-weight: bold;
-    margin-top: 20px;
+	text-align: center;
+	font-weight: bold;
+	margin-top: 20px;
 }
-
 .ac_footer {
-    width: 100%;
-    background-color: $footerbg;
-    color: white;
-    margin: 0;
-    padding: 20px;
+	width: 100%;
+	background-color: $footer;
+	color: $white;
+	margin: 0;
+	padding: 20px;
+	a {
+		text-decoration: none;
+		color: $white;
+		text-align: center;
+		display: block;
+	}
+	p {
+		margin: 0;
+	}
 }
-
-.ac_footer a {
-    text-decoration: none;
-    color: $white;
-    text-align: center;
-    display: block;
-}
-
-.ac_footer p {
-    margin: 0;
-}
-
 @media screen and (max-width: 768px) {
-    .ac_olympicsSection {
-        flex-direction: column;
-        padding: 20px;
-    }
-
-    .ac_leftColumn {
-        flex: none;
-        max-width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .ac_leftColumn img {
-        width: 100%;
-        max-width: none;
-        border-radius: 0;
-    }
-
-    .ac_rightColumn {
-        flex: none;
-        padding-left: 0;
-    }
-
-    .ac_weatherSection {
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-    }
-
-    .ac_weatherCard {
-        margin-left: 0;
-        margin-top: 20px;
-        width: 80%;
-    }
-
-    .ac_mapsSection {
-        flex-direction: column;
-        margin: 20px;
-    }
-
-    .ac_navbarLinks {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        background-color: $black;
-        width: 100%;
-        padding: 20px;
-    }
-
-    .ac_navbarLinks.active {
-        display: flex;
-    }
-
-    .ac_navbarLinks a {
-        padding: 10px 0;
-    }
-
-    .ac_hamburger {
-        display: block;
-    }
-
-    .ac_navbar.active .bar:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
-    }
-
-    .ac_navbar.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .ac_navbar.active .bar:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
-    }
-
-    .address-column {
-        display: none;
-    }
-    
-    .ac_currencyContainer {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .ac_currencySection {
-        flex: initial;
-    }
-
-    .ac_currencyInputSection {
-        margin-top: 20px;
-    }
+	.ac_olympicsSection {
+		flex-direction: column;
+		padding: 20px;
+	}
+	.ac_leftColumn {
+		flex: none;
+		max-width: 100%;
+		margin-bottom: 20px;
+		img {
+			width: 100%;
+			max-width: none;
+			border-radius: 0;
+		}
+	}
+	.ac_rightColumn {
+		flex: none;
+		padding-left: 0;
+	}
+	.ac_weatherSection {
+		flex-direction: column;
+		align-items: center;
+		padding: 10px;
+	}
+	.ac_weatherCard {
+		margin-left: 0;
+		margin-top: 20px;
+		width: 80%;
+	}
+	.ac_mapsSection {
+		flex-direction: column;
+		margin: 20px;
+	}
+	.ac_navbarLinks {
+		display: none;
+		flex-direction: column;
+		position: absolute;
+		top: 70px;
+		left: 0;
+		background-color: $black;
+		width: 100%;
+		padding: 20px;
+		a {
+			padding: 10px 0;
+		}
+	}
+	.ac_navbarLinks.active {
+		display: flex;
+	}
+	.ac_hamburger {
+		display: block;
+	}
+	.ac_navbar.active {
+		.bar {
+			&:nth-child(1) {
+				transform: rotate(-45deg) translate(-5px, 6px);
+			}
+			&:nth-child(2) {
+				opacity: 0;
+			}
+			&:nth-child(3) {
+				transform: rotate(45deg) translate(-5px, -6px);
+			}
+		}
+	}
+	.address-column {
+		display: none;
+	}
+	.ac_currencyContainer {
+		flex-direction: column;
+		align-items: center;
+	}
+	.ac_currencySection {
+		flex: initial;
+	}
+	.ac_currencyInputSection {
+		margin-top: 20px;
+	}
 }
-
 @media screen and (min-width: 728px) and (max-width: 1000px) {
-    .ac_currencyContainer {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .ac_currencySection {
-        flex: initial;
-    }
-
-    .ac_currencyInputSection {
-        margin-top: 20px;
-    }
+	.ac_currencyContainer {
+		flex-direction: column;
+		align-items: center;
+	}
+	.ac_currencySection {
+		flex: initial;
+	}
+	.ac_currencyInputSection {
+		margin-top: 20px;
+	}
 }
