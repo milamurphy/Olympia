@@ -324,6 +324,7 @@ input[type=text] {
 #ac_placesTable {
   width: 100%;
   border-collapse: collapse;
+  border-spacing: 0;
 }
 
 #ac_placesTable img {
@@ -338,12 +339,8 @@ input[type=text] {
   text-align: left;
 }
 
-#ac_placesTable th {
-  background-color: #f2f2f2;
-}
-
-.even-row {
-  background-color: #f9f9f9;
+#ac_placesTable tr:nth-child(even) {
+  background-color: #d8d8d8;
 }
 
 .ac_skyline {
