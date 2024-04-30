@@ -393,6 +393,7 @@ async function convertCurrency() {
     const conversionResultDiv = document.getElementById('ac_conversionResult');
 
     const url = `https://currency-exchange.p.rapidapi.com/exchange?from=${fromCurrency}&to=${toCurrency}&q=${amount}`;
+    console.log("URL:", url);
     const options = {
         method: 'GET',
         headers: {
@@ -404,6 +405,7 @@ async function convertCurrency() {
     try {
         const response = await fetch(url, options);
         const result = await response.text();
+        console.log(result)
         conversionResultDiv.textContent = `Converted Amount: ${result}`;
     } catch (error) {
         console.error(error);
