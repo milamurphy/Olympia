@@ -482,6 +482,9 @@ h1 {
 }
 
 @media screen and (max-width: 768px) {
+  #ac_parallax {
+    background-attachment: scroll;
+  }
   .ac_olympicsSection {
     flex-direction: column;
     padding: 20px;
