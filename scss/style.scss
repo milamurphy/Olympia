@@ -123,6 +123,7 @@ h1 {
 }
 
 .ac_ratingFilter {
+	margin-left: 30px;
     padding: 10px;
     border: $palegrey;
     border-radius: 5px;
@@ -409,12 +410,9 @@ h1 {
 	margin: 50px;
 	scroll-margin-top: 100px;
 }
-.ac_placesTableContainer {
-	margin:auto;
-}
+
 #ac_placesTable {
-	margin: auto;
-	width: 100%;
+	margin-left: auto;
 	border-collapse: collapse;
 	border-spacing: 0;
 	img {
@@ -428,7 +426,7 @@ h1 {
 	}
 	td {
 		padding: 8px;
-		text-align: left;
+		text-align: center;
 	}
 	tr {
 		&:nth-child(even) {
