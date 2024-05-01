@@ -54,6 +54,7 @@
             <div id="ac_countdown"></div>
         </div>
         <div class="ac_rightColumn">
+            <br>
             <h1>THE UPCOMING OLYMPICS</h1>
             <p>The world's greatest sporting event is coming to the City of Love. The Olympic Games are set to take
                 place in Paris, France from July 26th to August 11th 2024. This will be the third time that Paris has
@@ -75,19 +76,22 @@
     <div class="ac_mapsSection" id="ac_mapsSection">
         <div id="ac_controlPanel">
             <span class="ac_selectLocationLabel">Start:</span>
-            <input id="start" type="text"><br>
+            <input id="start" type="text">
             <span class="ac_selectLocationLabel">End:</span>
-            <input id="end" type="text"><br>
+            <input id="end" type="text">
             <span class="ac_selectLocationLabel">Additional Stops:</span>
             <input id="waypoints" type="text" placeholder="Enter stops separated by commas"><br>
-            <button><i class=material-icons onclick="calculateRoute('DRIVING')">directions_car</i></button>
-            <button><i class=material-icons onclick="calculateRoute('TRANSIT')">directions_bus</i></button>
-            <button><i class=material-icons onclick="calculateRoute('BICYCLING')">directions_bike</i></button>
-            <button><i class=material-icons onclick="calculateRoute('WALKING')">directions_walk</i></button>
-            <input type="button" onclick="calculateRoute()" id="submit" value="Submit">
+
+            <div>
+                <button><i class="material-icons" onclick="calculateRoute('DRIVING')">directions_car</i></button>
+                <button><i class="material-icons" onclick="calculateRoute('TRANSIT')">directions_bus</i></button>
+                <button><i class="material-icons" onclick="calculateRoute('BICYCLING')">directions_bike</i></button>
+                <button><i class="material-icons" onclick="calculateRoute('WALKING')">directions_walk</i></button>
+                <input type="button" class="ac_panelButton" onclick="calculateRoute()" id="submit" value="Submit">
+            </div>
         </div>
-        <div id=map></div>
     </div>
+    <div id=map></div>
     <details id="directionsDetails" class="ac_container">
         <summary>Directions</summary>
         <div id="directionsPanel"></div>
@@ -96,7 +100,7 @@
     <div class="ac_touristSection" id="ac_touristSection">
         <h1>TOURIST HIGHLIGHTS</h1>
         <div id="ac_placesContainer"></div>
-        <select id="ratingFilter">
+        <select id="ratingFilter" class="ac_ratingFilter">
             <option value="all">All Ratings</option>
             <option value="5">5</option>
             <option value="4">4</option>
@@ -104,7 +108,9 @@
             <option value="2">2</option>
             <option value="1">1</option>
         </select>
-        <div id="ac_placesTable"></div>
+        <div class="ac_placesTableContainer">
+            <div id="ac_placesTable"></div>
+        </div>
     </div>
 
     <h1 style="margin-left: 50px">WEATHER</h1>
@@ -131,7 +137,7 @@
         <img src="images/parisguy.png">
         <div class="ac_currencySection" id="ac_currencySection">
             <div class="ac_currencyInputSection">
-                <select id="ac_fromCurrency">
+                <select id="ac_fromCurrency" class="ac_selectInput">
                     <option value="SGD">SGD</option>
                     <option value="MYR">MYR</option>
                     <option value="EUR">EUR</option>
@@ -153,9 +159,9 @@
                     <option value="VND">VND</option>
                 </select>
 
-                <input type="number" id="ac_amount" placeholder="Enter amount">
+                <input type="number" id="ac_amount" placeholder="Enter amount" class="ac_numberInput">
 
-                <select id="ac_toCurrency">
+                <select id="ac_toCurrency" class="ac_selectInput">
                     <option value="MYR">MYR</option>
                     <option value="SGD">SGD</option>
                     <option value="EUR">EUR</option>
@@ -176,7 +182,7 @@
                     <option value="THB">THB</option>
                     <option value="VND">VND</option>
                 </select>
-                <button onclick="convertCurrency()">Convert</button>
+                <button class="ac_convertButton" onclick="convertCurrency()">Convert</button>
                 <div id="ac_conversionResult"></div>
             </div>
         </div>

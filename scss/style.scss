@@ -4,7 +4,10 @@ $lightgrey: #6d7072;
 $white: white;
 $roboto: "Roboto", sans-serif;
 $paris: 'Paris 2024';
-$olympicblue: #007aff;
+$olympicblue: #1B4174;
+$darkolympicblue: #0c2648;
+$submit: #5dd7b9;
+$submithover: #52a1b7;
 $transparent: transparent;
 $palegrey: #efefef;
 $footer: #3c3c3b;
@@ -54,7 +57,7 @@ h1 {
 	scroll-margin-top: 100px;
 	display: flex;
 	flex-direction: column;
-	select {
+	.ac_currencyInputSection select {
 		width: 100%;
 		padding: 10px;
 		margin-top: 10px;
@@ -63,7 +66,7 @@ h1 {
 		border-radius: 10px;
 		box-sizing: border-box;
 	}
-	button {
+	.ac_currencyInputSection button {
 		background-color: $olympicblue;
 		color: $white;
 		border: none;
@@ -92,7 +95,7 @@ h1 {
 	align-items: center;
 	flex: 1;
 }
-input {
+.ac_currencySection input {
 	width: 100%;
 	padding: 10px;
 	margin-top: 10px;
@@ -101,14 +104,45 @@ input {
 	border-radius: 10px;
 	box-sizing: border-box;
 }
-button {
+.ac_currencySection button {
 	width: 100%;
 	padding: 10px;
 	margin-top: 10px;
 	margin-bottom: 20px;
-	border: #efefef;
+	border: $palegrey;
 	border-radius: 10px;
 	box-sizing: border-box;
+}
+.ac_selectInput,
+.ac_numberInput {
+    padding: 10px;
+    border: 1px solid $palegrey;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.ac_ratingFilter {
+    padding: 10px;
+    border: $palegrey;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+	border: 1px solid $black;
+}
+
+.ac_convertButton {
+    padding: 10px 20px;
+    background-color: $olympicblue;
+    color: $white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.ac_convertButton:hover {
+    background-color: $darkolympicblue;
 }
 .ac_navbar {
 	font-family: $paris;
@@ -163,7 +197,7 @@ button {
 	}
 }
 .ac_textContainer {
-	font-family: $font-family_2;
+	font-family: $paris;
 	color: $white;
 	position: absolute;
 	top: 20%;
@@ -227,6 +261,7 @@ button {
 	border-radius: 25px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 .ac_mapsSection {
 	margin: 50px;
 	scroll-margin-top: 100px;
@@ -239,12 +274,15 @@ button {
 	border: thin solid #efefef;
 	flex: 2;
 }
+
 #ac_controlPanel {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
 	margin-bottom: 50px;
 	padding: 20px;
 	border-radius: 5px;
 	margin-bottom: 20px;
-	flex: 1;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	button {
 		&:hover {
@@ -252,9 +290,59 @@ button {
 		}
 	}
 }
+
+#ac_controlPanel input,
+#ac_controlPanel button {
+    flex: 1;
+    min-width: 100px;
+}
+
+#ac_controlPanel input[type="text"] {
+    flex: 1;
+    min-width: 100px;
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid $palegrey;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#ac_controlPanel button {
+    background-color: $olympicblue;
+    color: $white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#ac_controlPanel button:hover {
+    background-color: $darkolympicblue;
+}
+
+.ac_panelButton {
+	flex: 1;
+    min-width: 100px;
+	background-color: $submit;
+    color: $white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.ac_panelButton:hover {
+	background-color: $submithover;
+}
+
 .ac_selectLocationLabel {
 	font-weight: bold;
 	margin: 10px;
+	flex-basis: 100%;
 }
 #directions {
 	width: 100%;
@@ -321,7 +409,11 @@ button {
 	margin: 50px;
 	scroll-margin-top: 100px;
 }
+.ac_placesTableContainer {
+	margin:auto;
+}
 #ac_placesTable {
+	margin: auto;
 	width: 100%;
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -435,7 +527,10 @@ button {
 			}
 		}
 	}
-	.address-column {
+	.ac_addressColumn {
+		display: none;
+	}
+	.ac_addressHeader {
 		display: none;
 	}
 	.ac_currencyContainer {

@@ -221,7 +221,7 @@ function getNearbyServicesMarkers(results, status) {
 
         imageHeader.innerHTML = '<b>Image</b>';
         nameHeader.innerHTML = '<b>Name</b>';
-        addressHeader.innerHTML = '<b>Address</b>';
+        addressHeader.innerHTML = '<b class="ac_addressHeader">Address</b>';
         ratingHeader.innerHTML = '<b>Rating</b>';
 
         results.forEach(result => {
@@ -236,7 +236,7 @@ function getNearbyServicesMarkers(results, status) {
 
             row.insertCell(1).innerHTML = result.name;
             let addressCell = row.insertCell(2);
-            addressCell.className = 'address-column';
+            addressCell.className = 'ac_addressColumn';
             addressCell.innerHTML = result.vicinity || "Address not available";
             row.insertCell(3).innerHTML = result.rating || "Rating not available";
         });
@@ -413,10 +413,10 @@ window.onload = function () {
 async function convertCurrency() {
     const fromCurrency = document.getElementById('ac_fromCurrency').value;
     const toCurrency = document.getElementById('ac_toCurrency').value;
-    const amount = document.getElementById('ac_amount').value;
+    const amount = parseFloat(document.getElementById('ac_amount').value);
     const conversionResultDiv = document.getElementById('ac_conversionResult');
 
-    const url = `https://currency-exchange.p.rapidapi.com/exchange?from=${fromCurrency}&to=${toCurrency}&q=${amount}`;
+    const url = `https://currency-exchange.p.rapidapi.com/exchange?from=${fromCurrency}&to=${toCurrency}&q=1.0`;
     console.log("URL:", url);
     const options = {
         method: 'GET',
@@ -429,8 +429,8 @@ async function convertCurrency() {
     try {
         const response = await fetch(url, options);
         const result = await response.text();
-        console.log(result)
-        conversionResultDiv.textContent = `Converted Amount: ${result}`;
+        const convertedAmount = result * amount;
+        conversionResultDiv.textContent = `Converted Amount: ${convertedAmount.toFixed(2)} ${toCurrency}`;
     } catch (error) {
         console.error(error);
         conversionResultDiv.textContent = 'An error occurred. Please try again.';
